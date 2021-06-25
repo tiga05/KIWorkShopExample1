@@ -1,4 +1,5 @@
 import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"    
 import cv2
 import time
 import pyautogui
@@ -18,7 +19,7 @@ from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
-model_path = 'C:\\build\\OTJ2\\Example1\\model\\ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8\\saved_model'
+model_path = 'C:\\build\\OTJ2\\Example1\\ssdmobilenet'
 def load_model(model_path):
     model = tf.saved_model.load(model_path)
     return model
