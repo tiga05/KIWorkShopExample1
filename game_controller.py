@@ -13,8 +13,8 @@ import pyparsing
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
-sys.path.append('C:\\build\OTJ2\\models\\research')
-sys.path.append("C:\\build\OTJ2\\models\\research\\object_detection\\utils")
+sys.path.append("research")
+sys.path.append("research\\object_detection\\utils")
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
