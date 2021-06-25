@@ -10,16 +10,17 @@ import numpy as np
 from tensorflow.python.saved_model.load import load
 import pyparsing
 
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
 sys.path.append("research")
 sys.path.append("research\\object_detection\\utils")
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
-model_path = 'C:\\build\\OTJ2\\Example1\\ssdmobilenet'
+PATH_TO_LABELS = 'model\\mscoco_complete_label_map.pbtxt'
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
+model_path = 'ssdmobilenet'
 def load_model(model_path):
     model = tf.saved_model.load(model_path)
     return model
@@ -58,7 +59,7 @@ def run_inference_for_single_image(model, image):
 
 
 # List of the strings that is used to add correct label for each box.
-PATH_TO_LABELS = 'C:\\build\\OTJ2\\Example1\\model\\mscoco_complete_label_map.pbtxt'
+
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 loadedModell = load_model(model_path)
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
