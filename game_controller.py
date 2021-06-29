@@ -16,11 +16,11 @@ from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
-PATH_TO_LABELS = 'model\\mscoco_complete_label_map.pbtxt'
+PATH_TO_LABELS = 'labelmap.pbtxt'
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
-model_path = 'ssdmobilenet'
+model_path = 'savedModell'
 def load_model(model_path):
     model = tf.saved_model.load(model_path)
     return model
