@@ -8,7 +8,6 @@ import sys
 import numpy as np
 
 from tensorflow.python.saved_model.load import load
-import pyparsing
 
 sys.path.append("research")
 sys.path.append("research\\object_detection\\utils")
