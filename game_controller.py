@@ -18,9 +18,9 @@ from object_detection.utils import visualization_utils as vis_util
 
 PATH_TO_LABELS = 'labelmap.pbtxt'
 cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
-model_path = 'savedModell'
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+model_path = 'saved_model_colab2'
 def load_model(model_path):
     model = tf.saved_model.load(model_path)
     return model
