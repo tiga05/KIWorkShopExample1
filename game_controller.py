@@ -21,7 +21,7 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
 
 PATH_TO_LABELS = 'labelmap.pbtxt'
-PATH_TO_MODEL = 'savedModel'
+PATH_TO_MODEL = 'saved_model_colab12000'
 #alternative network for detection with a wide range of objects
 #PATH_TO_LABELS = 'ssdmobilenet\\mscoco_complete_label_map.pbtxt'
 #PATH_TO_MODEL = 'ssdmobilenet'
