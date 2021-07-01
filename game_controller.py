@@ -3,6 +3,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import cv2
 import time
 import pyautogui
+import pydirectinput
 import tensorflow as tf
 import sys
 import numpy as np
@@ -20,6 +21,9 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
 
 PATH_TO_LABELS = 'labelmap.pbtxt'
 PATH_TO_MODEL = 'savedModel'
+#alternative network for detection with a wide range of objects
+#PATH_TO_LABELS = 'ssdmobilenet\\mscoco_complete_label_map.pbtxt'
+#PATH_TO_MODEL = 'ssdmobilenet'
 
 ###################################################################
 #load model
@@ -79,10 +83,12 @@ while True:
     ret, image = cap.read()
     output_dict = run_inference_for_single_image(loadedModell, image)
 
-####################### good place for your modifications #############################
+#######################START OF good place for your modifications #############################
     labelList = []
     index = 0
 
+    print(output_dict['detection_scores'][0])
+    print(output_dict['detection_scores'][1])
     for detection in output_dict['detection_scores']:
         if(detection > 0.55):
             labelNumber = output_dict['detection_classes'][index]
@@ -90,7 +96,8 @@ while True:
             print(labelNumber)
         else:
             break
-        
+        index+=1
+
     #tennisball
     if 1 in labelList:
         print("tennisball found; do tennisball things")
@@ -98,10 +105,14 @@ while True:
     #finger
     if 2 in labelList:
         print("finger found; do finger things")
+        pydirectinput.keyDown("right")
+    else:
+        pydirectinput.keyUp("right")
 
-    #laugh    
+    #laugh   
     if 3 in labelList:
         print("laugh found; do laugh things")
+        pydirectinput.press("up")
     
 ####################### END OF good place for your modifications #############################
 
