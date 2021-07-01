@@ -7,6 +7,7 @@ import pydirectinput
 import tensorflow as tf
 import sys
 import numpy as np
+import threading
 from tensorflow.python.saved_model.load import load
 sys.path.append("research")
 sys.path.append("research\\object_detection\\utils")
@@ -72,18 +73,12 @@ category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABE
 #load model
 loadedModell = load_model(PATH_TO_MODEL)
 
-#####################################
-# processing loop; runs endless until "q" is pushed
+#######################START OF good place for your modifications #############################
 # classes:
 # 1 == tennisball
 # 2 == finger
 # 3 == laugh
-
-while True:
-    ret, image = cap.read()
-    output_dict = run_inference_for_single_image(loadedModell, image)
-
-#######################START OF good place for your modifications #############################
+def doActions(output_dict):
     labelList = []
     index = 0
 
@@ -111,8 +106,17 @@ while True:
     if 3 in labelList:
         print("laugh found; do laugh things")
         pydirectinput.press("up")
-    
+
 ####################### END OF good place for your modifications #############################
+
+#####################################
+# processing loop; runs endless until "q" is pushed
+while True:
+    ret, image = cap.read()
+    output_dict = run_inference_for_single_image(loadedModell, image)
+
+    thread = threading.Thread(target=doActions, args=(output_dict,))
+    thread.start()
 
     # Visualization of the results of a detection.
     vis_util.visualize_boxes_and_labels_on_image_array(
