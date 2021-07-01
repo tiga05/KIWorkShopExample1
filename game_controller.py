@@ -87,8 +87,6 @@ while True:
     labelList = []
     index = 0
 
-    print(output_dict['detection_scores'][0])
-    print(output_dict['detection_scores'][1])
     for detection in output_dict['detection_scores']:
         if(detection > 0.55):
             labelNumber = output_dict['detection_classes'][index]
