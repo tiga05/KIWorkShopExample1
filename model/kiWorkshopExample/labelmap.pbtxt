@@ -1,0 +1,24 @@
+item {
+    id: 1
+    name: 'ESP32'
+}
+item {
+    id: 2
+    name: 'appletvremote'
+}
+item {
+    id: 3
+    name: 'flash'
+}
+item {
+    id: 4
+    name: 'uhr'
+}
+item {
+    id: 5
+    name: 'maus'
+}
+item {
+    id: 6
+    name: 'hometrainer'
+}
